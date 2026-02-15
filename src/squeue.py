@@ -1,0 +1,26 @@
+class SQueue:
+    def __init__(self):
+        self.stack1 = []
+        self.stack2 = []
+    
+    def push(self, x:int):
+        self.stack1.append(x)
+
+    def pop(self) -> int:
+        if self.stack1:
+            while self.stack1:
+                self.stack2.append(self.stack1.pop())
+        
+        return self.stack2.pop() if self.stack2 else -1
+    
+    def peek(self) -> int:
+        if self.stack1:
+            while self.stack1:
+                self.stack2.append(self.stack1.pop())
+
+        ans = self.stack2[-1] if self.stack2 else -1
+        
+        return ans
+    
+    def empty(self) -> bool:
+        return not self.stack1 and not self.stack2
