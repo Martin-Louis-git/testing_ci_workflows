@@ -38,5 +38,5 @@ def test_shortest_path():
         2: [(0, 1), (1, 2), (3, 8)],
         3: [(1, 5), (2, 8)]
     }
-    assert shortest_path(graph, 0) == {0: 0, 1: 4, 2: 1, 3: 9}
-    assert shortest_path(graph, 1) == {1: 0, 0: 4, 2: 2, 3: 5}
+    assert shortest_path(graph, 0) == {0: 0, 1: 3, 2: 1, 3: 8}
+    assert shortest_path(graph, 1) == {1: 0, 0: 3, 2: 2, 3: 5}
