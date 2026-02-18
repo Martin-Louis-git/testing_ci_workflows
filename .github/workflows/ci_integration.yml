@@ -27,4 +27,13 @@ jobs:
         run: docker build -t test-build .
 
       - name: Run Container
-        run: docker run -p 8000:8000 test-build
+        run: docker run -d --name app -p 8000:8000 test-build
+
+      - name: Smoke test
+        run: |
+          sleep 2
+          curl -f http://localhost:8000/docs
+
+      - name: Stop container
+        if: always()
+        run: docker rm -f app
