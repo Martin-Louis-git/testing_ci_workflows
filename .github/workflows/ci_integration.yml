@@ -1,7 +1,7 @@
-name: Ci
+name: Ci-integration
 
 on:
-  pull_request:
+  push:
     branches: [main]
 
 jobs:
@@ -21,4 +21,10 @@ jobs:
         run: uv sync --dev
 
       - name: Run tests
-        run: uv run pytest
+        run: uv run pytest tests/integration
+
+      - name: Set up docker build
+        run: docker build -t test-build .
+
+      - name: Run Container
+        run: docker run -p 8000:8000 test-build
